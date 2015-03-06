@@ -1,0 +1,36 @@
+{
+  "name": "node-iterator",
+  "version": "0.0.0",
+  "description": "A ES6 Generator that traverses the child nodes within the given `Node`",
+  "main": "build/index.js",
+  "scripts": {
+    "prepublish": "make",
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/webmodules/node-iterator.git"
+  },
+  "keywords": [
+    "browser",
+    "dom",
+    "node",
+    "iterate",
+    "iterator",
+    "generator",
+    "createNodeIterator"
+  ],
+  "author": "Nathan Rajlich <nathan@tootallnate.net> (http://n8.io/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/webmodules/node-iterator/issues"
+  },
+  "homepage": "https://github.com/webmodules/node-iterator",
+  "dependencies": {
+    "babel-runtime": "4"
+  },
+  "devDependencies": {
+    "babel": "4",
+    "zuul": "2"
+  }
+}

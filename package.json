@@ -1,6 +1,6 @@
 {
   "name": "node-iterator",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A ES6 Generator that traverses the child nodes within the given `Node`",
   "main": "build/index.js",
   "scripts": {

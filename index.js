@@ -6,12 +6,10 @@
  */
 
 let allowsFilterFn = (function () {
-  var called = false;
-  var d = document;
-  var n = d.createTextNode('a');
-  var it = d.createNodeIterator(n, NodeFilter.SHOW_ALL, function () {
-    called = true;
-  }, false);
+  let called = false;
+  let d = document;
+  let n = d.createTextNode('a');
+  let it = d.createNodeIterator(n, NodeFilter.SHOW_ALL, () => called = true, false);
   it.nextNode();
   return called;
 })();

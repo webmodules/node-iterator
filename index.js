@@ -30,13 +30,17 @@ let allowsFilterFn = (function () {
  * @public
  */
 
-function* NodeIterator(node, whatToShow = NodeFilter.SHOW_ALL, filter = () => NodeFilter.FILTER_ACCEPT, entityReferenceExpansion = false) {
+function NodeIterator(node, whatToShow = NodeFilter.SHOW_ALL, filter = () => NodeFilter.FILTER_ACCEPT, entityReferenceExpansion = false) {
   if (!allowsFilterFn && 'function' === typeof filter) {
     filter = { acceptNode: filter };
   }
 
-  let next;
   let iterator = node.ownerDocument.createNodeIterator(node, whatToShow, filter, entityReferenceExpansion);
+  return NodeIteratorGenerator(iterator);
+}
+
+function* NodeIteratorGenerator(iterator) {
+  let next;
   while (next = iterator.nextNode()) {
     yield next;
   }

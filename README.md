@@ -1,22 +1,20 @@
-node-iterator
-============
-### A ES6 Generator that traverses the child nodes within the given `Node`
+
+# node-iterator
+
+A ES6 Generator that traverses the child nodes within the given `Node`
 
 [![Sauce Test Status](https://saucelabs.com/browser-matrix/node-iterator.svg)](https://saucelabs.com/u/node-iterator)
 
 [![Build Status](https://travis-ci.org/webmodules/node-iterator.svg?branch=master)](https://travis-ci.org/webmodules/node-iterator)
 
 
-Installation
-------------
+## Installation
 
 ``` bash
 $ npm install node-iterator
 ```
 
-
-Example
--------
+## Example
 
 ``` js
 import NodeIterator from 'node-iterator';
@@ -31,3 +29,7 @@ for (node of NodeIterator(document.body)) {
 let nodes = [...NodeIterator(document.body)];
 console.log(nodes.length);
 ```
+
+## License
+
+MIT

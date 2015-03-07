@@ -1,8 +1,11 @@
 
 /**
  * IE *requires* the `filter` to be a Function otherwise it throws an Error.
- * Whereas MDN documents that NodeFilter should be an Object with an
- * `acceptNode` function.
+ * https://msdn.microsoft.com/en-us/library/ie/ff975301(v=vs.85).aspx
+ *
+ * Whereas MDN documents that NodeFilter *should* be an Object with an
+ * `acceptNode` function, but that Firefox accepts a direct Function as well.
+ * https://developer.mozilla.org/en-US/docs/Web/API/Document/createNodeIterator
  */
 
 let allowsFilterFn = (function () {

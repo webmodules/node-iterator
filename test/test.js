@@ -74,4 +74,31 @@ describe('node-iterator', function () {
     assert.equal(true, next.done);
   });
 
+  it('should allow passing a NodeFilter function as 2nd parameter', function () {
+    div.innerHTML = 'hello<br>world';
+
+    var next;
+    var iterator = NodeIterator(div, function (node) {
+      return node.nodeType === Node.TEXT_NODE || node.nodeName === 'BR';
+    });
+
+    next = iterator.next();
+    assert.equal(false, next.done);
+    assert.equal(Node.TEXT_NODE, next.value.nodeType);
+    assert.equal('hello', next.value.nodeValue);
+
+    next = iterator.next();
+    assert.equal(false, next.done);
+    assert.equal(Node.ELEMENT_NODE, next.value.nodeType);
+    assert.equal('BR', next.value.nodeName);
+
+    next = iterator.next();
+    assert.equal(false, next.done);
+    assert.equal(Node.TEXT_NODE, next.value.nodeType);
+    assert.equal('world', next.value.nodeValue);
+
+    next = iterator.next();
+    assert.equal(true, next.done);
+  });
+
 });

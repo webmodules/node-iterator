@@ -32,6 +32,11 @@ let allowsFilterFn = (function () {
 
 function NodeIterator(node, whatToShow = NodeFilter.SHOW_ALL, filter = () => NodeFilter.FILTER_ACCEPT, entityReferenceExpansion = false) {
 
+  if ('function' === typeof whatToShow) {
+    filter = whatToShow;
+    whatToShow = NodeFilter.SHOW_ALL;
+  }
+
   function acceptNode (node) {
     let r = filter(node);
     if ('number' !== typeof r) {

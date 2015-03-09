@@ -31,11 +31,18 @@ let allowsFilterFn = (function () {
  */
 
 function NodeIterator(node, whatToShow = NodeFilter.SHOW_ALL, filter = () => NodeFilter.FILTER_ACCEPT, entityReferenceExpansion = false) {
-  if (!allowsFilterFn && 'function' === typeof filter) {
-    filter = { acceptNode: filter };
+
+  function acceptNode (node) {
+    let r = filter(node);
+    if ('number' !== typeof r) {
+      // if the user directly returned a boolean (or anything else non-Number),
+      // then cast it to one of the FILTER_ACCEPT or FILTER_REJECT values
+      r = r ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+    }
+    return r;
   }
 
-  let iterator = node.ownerDocument.createNodeIterator(node, whatToShow, filter, entityReferenceExpansion);
+  let iterator = node.ownerDocument.createNodeIterator(node, whatToShow, allowsFilterFn ? acceptNode : { acceptNode: acceptNode }, entityReferenceExpansion);
   return NodeIteratorGenerator(iterator);
 }
 
